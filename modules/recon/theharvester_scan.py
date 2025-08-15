@@ -1,4 +1,3 @@
-# modules/recon/theharvester_scan.py
 import subprocess
 import streamlit as st
 from io import BytesIO
@@ -37,7 +36,6 @@ def run_theharvester(domain: str, source: str = "all", limit: int = 100):
             st.warning(msg)
             output_text += msg
 
-        # Bouton pour télécharger le rapport
         save_results_to_memory(output_text, f"theharvester_{domain.replace('.', '_')}.txt")
 
     except subprocess.TimeoutExpired:

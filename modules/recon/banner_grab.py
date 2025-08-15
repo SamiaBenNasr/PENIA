@@ -1,4 +1,3 @@
-# modules/recon/banner_grab.py
 import socket
 import streamlit as st
 
@@ -12,7 +11,7 @@ def banner_grab(target: str, port: int = 80, timeout: float = 5.0) -> str:
         s.close()
         return banner if banner else "Pas de bannière"
     except Exception as e:
-        return None  # Retourne None si pas de connexion
+        return None  
 
 def run_banner_grab(targets=None, ports=None, streamlit_mode=False):
     """Exécute le banner grab sur plusieurs cibles/ports et affiche seulement ceux qui répondent."""
@@ -25,7 +24,7 @@ def run_banner_grab(targets=None, ports=None, streamlit_mode=False):
     for t in targets:
         for p in ports:
             banner = banner_grab(t, p)
-            if banner is not None:  # Seulement si connexion OK
+            if banner is not None:  
                 results.append((t, p, banner))
                 if streamlit_mode:
                     st.write(f"[{t}:{p}] → {banner}")

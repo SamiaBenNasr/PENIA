@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import streamlit as st  # ➤ Ajout de Streamlit ici
+import streamlit as st  
 
 def scrape_emails(url: str) -> set:
     try:

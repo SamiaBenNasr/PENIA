@@ -2,20 +2,17 @@ import streamlit as st
 from modules.scan.nikto import run_nikto_scan
 from modules.scan.nmap import run_nmap_scan
 
-# Configuration de la page
 st.set_page_config(page_title="Pen IA - Scan & Vuln", layout="wide")
 st.markdown("## 🛡️ Outils de Scan & Analyse de Vulnérabilités")
 st.markdown("Effectuez des scans réseau, détectez les vulnérabilités et interagissez avec vos cibles de manière automatisée.")
 st.markdown("-")
 
-# Menu des options
 option_scan = st.selectbox("Choisis une option :", [
     "Sélectionne...",
     "🌐 Scan Réseau avec Nmap",
     "🔍 Scan de vulnérabilités avec Nikto",
 ])
 
-# --- Scan Réseau avec Nmap ---
 if option_scan == "🌐 Scan Réseau avec Nmap":
     st.subheader("🌐 Scanner le réseau avec Nmap")
     st.markdown("📡 Réalisez un scan complet des ports et services d'une IP ou d'une plage d'IP.")
@@ -31,7 +28,6 @@ if option_scan == "🌐 Scan Réseau avec Nmap":
         else:
             st.warning("Veuillez entrer une cible valide.")
 
-# --- Scan de vulnérabilités avec Nikto ---
 elif option_scan == "🔍 Scan de vulnérabilités avec Nikto":
     st.subheader("🔍 Scanner le site avec Nikto")
     st.markdown("🕵️ Analyse de vulnérabilités web et découverte des failles communes sur un site.")

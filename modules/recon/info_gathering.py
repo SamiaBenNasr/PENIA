@@ -26,7 +26,7 @@ def run_nslookup(host: str) -> str:
                 st.warning(msg)
                 return "=== NSLOOKUP ===\n" + msg
         except ValueError:
-            pass  # C'est un nom de domaine, pas une IP
+            pass  
 
         output = subprocess.check_output(["nslookup", host], stderr=subprocess.STDOUT)
         result = output.decode()

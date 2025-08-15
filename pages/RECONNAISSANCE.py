@@ -5,15 +5,12 @@ from modules.recon.whatweb_scan import run_whatweb_scan, run_whatweb_ip_range
 from modules.recon.theharvester_scan import run_theharvester
 from modules.recon.banner_grab import run_banner_grab
 
-# Configuration de la page
 st.set_page_config(page_title="Pen IA - Outils de Reconnaissance", layout="wide")
 
-# Header
 st.markdown("## 🕵️‍♂️ Outils de Reconnaissance - Pen IA")
 st.markdown("Collectez des informations sur vos cibles grâce à des outils automatisés et puissants.")
 st.markdown("---")
 
-# Sélection de l'outil
 option = st.selectbox("Choisis un outil :", [
     "Sélectionne...",
     "🌐 Web Reconnaissance (email, title)",
@@ -24,7 +21,6 @@ option = st.selectbox("Choisis un outil :", [
     "📧 Collecte emails avec theHarvester"
 ])
 
-# --- Web Reconnaissance ---
 if option == "🌐 Web Reconnaissance (email, title)":
     st.markdown("**Web Recon** : collecte des titres, meta-data et emails d'un site.")
     url = st.text_input("Entrez l’URL (ex: http://tryhackme.com)", value="http://tryhackme.com", key="web_url")
@@ -35,7 +31,6 @@ if option == "🌐 Web Reconnaissance (email, title)":
         else:
             st.warning("Veuillez entrer une URL.")
 
-# --- Banner Grabbing ---
 elif option == "📝 Banner Grabbing":
     st.markdown("**Banner Grabbing** : récupère les bannières des services ouverts.")
     targets = st.text_input("Cibles séparées par virgule (ex: tryhackme.com,192.168.1.10)",value="192.168.0.111",key="banner_targets")
@@ -51,7 +46,6 @@ elif option == "📝 Banner Grabbing":
         else:
             st.warning("Veuillez remplir le champ des cibles.")
 
-# --- Ping / NSLookup / Whois ---
 elif option == "📡 Ping / NSLookup / Whois":
     st.markdown("**Info Gathering** : collecte des informations réseau et DNS.")
     host = st.text_input("Entrez le domaine ou IP cible", value="192.168.0.111", key="host_input")
@@ -62,7 +56,6 @@ elif option == "📡 Ping / NSLookup / Whois":
         else:
             st.warning("Veuillez entrer un hôte.")
 
-# --- WhatWeb Scan (URL) ---
 elif option == "🌍 WhatWeb Scan (URL)":
     st.markdown("**WhatWeb URL** : scanner d’empreintes web avec différents niveaux d’agressivité.")
     url = st.text_input("Entrez l’URL (ex: collegecdi.ca)", value="http://collegecdi.ca", key="whatweb_url")
@@ -76,7 +69,6 @@ elif option == "🌍 WhatWeb Scan (URL)":
         else:
             st.warning("Veuillez entrer une URL.")
 
-# --- WhatWeb Scan (Plage IP) ---
 elif option == "📊 WhatWeb Scan (Plage IP)":
     st.markdown("**WhatWeb IP Range** : scanner d’empreintes web sur une plage d’IP.")
     ip_range = st.text_input("Entrez la plage d’IP (ex: 192.168.1.0/24)", value="192.168.0.111", key="ip_range")
@@ -86,7 +78,6 @@ elif option == "📊 WhatWeb Scan (Plage IP)":
         run_whatweb_ip_range(ip_range, str(level), output_file)
         st.success(f"✅ Scan IP Range lancé sur : {ip_range}")
 
-# --- TheHarvester ---
 elif option == "📧 Collecte emails avec theHarvester":
     st.markdown("**theHarvester** : collecte des emails et sous-domaines d’un domaine cible.")
     domain = st.text_input("Entrez le domaine cible (ex: example.com)",value="tryhackme.com", key="harvester_domain")
