@@ -18,7 +18,7 @@ L'application est conçue pour être utilisée dans un environnement de test loc
 - **Reconnaissance** : Collecte d'informations sur la cible.
 - **Scan & Analyse des vulnérabilités** : Intégration de Nmap et Nikto.
 - **Exploitation** : Utilisation de Metasploit pour tester les vulnérabilités.
-- **Rapport Automatisé** : Génération d'un rapport détaillé des vulnérabilités et recommandations.
+
 
 
 
