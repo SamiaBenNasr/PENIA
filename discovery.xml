@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.95 scan initiated Tue Oct  7 15:52:07 2025 as: /usr/lib/nmap/nmap -&#45;privileged -p- -T4 -Pn -oX discovery.xml 192.168.252.209 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -p- -T4 -Pn -oX discovery.xml 192.168.252.209" start="1759848727" startstr="Tue Oct  7 15:52:07 2025" version="7.95" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
