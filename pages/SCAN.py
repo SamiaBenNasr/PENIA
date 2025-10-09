@@ -17,7 +17,7 @@ if option_scan == "🌐 Scan Réseau avec Nmap":
     st.subheader("🌐 Scanner le réseau avec Nmap")
     st.markdown("📡 Réalisez un scan complet des ports et services d'une IP ou d'une plage d'IP.")
     cible = st.text_input("Entrez l’adresse IP ou la plage (ex: 192.168.1.4 ou 192.168.1.0/24)", value="192.168.252.209", key="nmap_cible")
-    options = st.text_input("Options Nmap (Information : Pour créer le dataset nécessaire à l’entraînement du modèle de priorisation, les options -sV --script vuln et -oX /chemin/vers/metasploitable_host.xml sont toujours ajoutées à votre commande. Les autres options que vous renseignez seront conservées.)", value="", key="nmap_options")
+    options = st.text_input("Options Nmap (Information : Pour créer le dataset nécessaire à l’entraînement du modèle de priorisation, les options -sV --script vuln et -oX /chemin/vers/metasploitable_host.xml sont toujours ajoutées à votre commande. Les autres options que vous renseignez seront conservées.)", value="nmap -sV --script vuln,vulners ", key="nmap_options")
     if st.button("Lancer le scan", key="nmap_button"):
         if cible:
             with st.spinner("Scan en cours..."):

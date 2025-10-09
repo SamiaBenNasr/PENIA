@@ -12,7 +12,7 @@ def run_nmap_scan(target: str, user_args: str = "") -> Tuple[str, str]:
     xml_path = output_dir / "metasploitable_host.xml"
 
     # Assemble la commande Nmap : les options de l'utilisateur + toujours -oX xml_path
-    cmd = ["nmap"] + shlex.split(user_args) + ["-sV", "--script", "vuln", "-oX", str(xml_path), target]
+    cmd = ["nmap"] + shlex.split(user_args) + ["-sV", "--script", "vuln,vulners","-oX", str(xml_path), target]
 
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True, check=True)
