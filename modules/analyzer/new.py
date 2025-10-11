@@ -9,6 +9,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import cross_val_score
 from xgboost import XGBRegressor
+import joblib
 
 
 
@@ -17,7 +18,7 @@ from xgboost import XGBRegressor
 
 
 # save filepath to variable for easier access
-vuln_file_path = '/home/sam/pen_ia/modules/analyzer/data/detailed.csv'
+vuln_file_path = '/home/sam/pen_ia/modules/analyzer/data/train.csv'
 # read the data and store data in DataFrame titled vuln_data
 vuln_data = pd.read_csv(vuln_file_path) 
 # Supprimer les lignes sans exploit_cvss
@@ -82,23 +83,8 @@ print(scores.mean())
 
 my_pipeline.fit(X, y)
 
-data={'port':[21,20,22,23,80],
-      'protocol':['tcp','tcp','tcp','tcp','tcp'],
-      'service':['ftp','ftp','ssh','telnet','http'],
-      'product':['vsftpd','proftpd','openssh','dropbear','apache'],
-      'version':['2.3.4','1.3.5','7.9','1.3','2.4.41'],
-      'cpe':['cpe:/a:vsftpd:vsftpd:2.3.4','cpe:/a:proftpd:proftpd:1.3.5','cpe:/a:openssh:openssh:7.9','cpe:/a:dropbear_ssh:dropbear:1.3','cpe:/a:apache:http_server:2.4.41'],
-      'exploit_type':['remote','remote','remote','remote','remote'],
-      'is_exploit':[1,1,1,1,1],
-      'cve_list':['CVE-2011-2523','CVE-2015-3306','CVE-2016-10009','CVE-2016-7406','CVE-2019-0211'],
-      'ref_links':[5,3,4,2,6],
-      'exploit_id':[12345,23456,34567,45678,56789],
-      'cvss_score_moyen':[7.5,6.8,9.1,5.4,8.3]  # variable cible
-     }
-vuln_data1=pd.DataFrame(data)
-z=vuln_data1[vuln_data_features]
-print(vuln_data1['cvss_score_moyen'])
 
-y_pred = my_pipeline.predict(z)
-print("Predicted CVSS Score:", y_pred)
-print("mae:", mean_absolute_error(vuln_data1['cvss_score_moyen'], y_pred))
+# Sauvegarder le modèle entraîné
+joblib.dump(my_pipeline, "/home/sam/pen_ia/modules/analyzer/models/cvss_predictor.pkl")
+
+print("✅ Modèle sauvegardé sous cvss_predictor.pkl")
