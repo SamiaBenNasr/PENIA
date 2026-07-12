@@ -65,9 +65,4 @@ Training data comes from Nmap scan exports and CVSS reference scores.
 
 PENIA is intended strictly for educational and testing purposes in **authorized, local, or virtualized environments**. Unethical or unauthorized use is strictly prohibited; the author assumes no liability for misuse.
 
-## License
 
-MIT License
-
----
-**Author:** Samia Ben Nasr | **GitHub:** [@SamiaBenNasr](https://github.com/SamiaBenNasr)
